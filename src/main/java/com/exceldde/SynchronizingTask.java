@@ -25,10 +25,24 @@ public class SynchronizingTask extends TimerTask {
         System.out.println("任務時間：" + new Date());
         try {
             //R代表第二行(橫)  C代表第列  (豎)
-            System.out.println("A1 value: " + conversation.request("R1C1"));
-            System.out.println("A1 value: " + conversation.request("R2C2"));
+    /*        System.out.println("A1 value: " + conversation.request("R1C1"));
+            System.out.println("A1 value: " + conversation.request("R2C2"));*/
 
-            System.out.println(conversation.request("R1C3") + ":" + conversation.request("R2C3"));
+            //累積委買口數
+            System.out.println(conversation.request("R1C3").trim() + ":" + conversation.request("R2C3").trim());
+            //累積委賣口數
+            System.out.println(conversation.request("R1C5").trim() + ":" + conversation.request("R2C5").trim());
+
+            Integer lotDifference = Integer.valueOf(conversation.request("R2C3").trim()) - Integer.valueOf(conversation.request("R2C5").trim());
+            System.out.println("口數差異" + lotDifference);
+            //累積委買筆數
+            System.out.println(conversation.request("R1C4").trim() + ":" + conversation.request("R2C4").trim());
+            //累積委賣筆數
+            System.out.println(conversation.request("R1C6").trim() + ":" + conversation.request("R2C6").trim());
+
+            Integer countDifference = Integer.valueOf(conversation.request("R2C4").trim()) - Integer.valueOf(conversation.request("R2C6").trim());
+            System.out.println("筆數差異" + countDifference);
+
         } catch (DDEException e) {
             e.printStackTrace();
         }

@@ -22,7 +22,7 @@ public class ExcelExample {
         try {
             conversation.connect("Excel", "C:\\Users\\user\\Desktop\\Excel.xlsx");
             Timer timer = new Timer();
-            timer.schedule(new SynchronizingTask(conversation), 1000, 1000 * 1);
+            timer.schedule(new SynchronizingTask(conversation), 1000, 1000 * 10);
         } catch (Exception e) {
             e.printStackTrace();
         }
